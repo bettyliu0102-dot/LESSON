@@ -227,21 +227,113 @@
         }
         
         @media (max-width: 768px) {
-            .stage {
-                flex-direction: column !important;
+            body {
+                padding: 10px;
             }
             
-            .stage-content, .stage-node, .image-carousel {
-                width: 100%;
+            .container {
+                padding: 20px;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .header p {
+                font-size: 14px;
+            }
+            
+            .timeline {
+                padding: 20px 0;
             }
             
             .timeline::before {
                 left: 20px;
             }
             
-            .stage-node {
-                flex-direction: row;
+            .stage {
+                flex-direction: column !important;
+                margin-bottom: 40px;
+            }
+            
+            .stage-content, .image-carousel {
+                width: 100%;
                 margin-bottom: 20px;
+            }
+            
+            .stage-content {
+                padding: 20px;
+            }
+            
+            .stage-node {
+                width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                margin-bottom: 15px;
+                padding-left: 0;
+            }
+            
+            .node-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 12px;
+            }
+            
+            .node-circle .age {
+                font-size: 10px;
+            }
+            
+            .section-title {
+                font-size: 14px;
+            }
+            
+            .content-list li {
+                font-size: 14px;
+            }
+            
+            .ability-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .ability-list li {
+                font-size: 13px;
+            }
+            
+            .carousel-container {
+                height: 250px;
+            }
+            
+            .next-button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .node-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 11px;
+            }
+            
+            .carousel-container {
+                height: 200px;
+            }
+            
+            .stage-content {
+                padding: 15px;
             }
         }
         
