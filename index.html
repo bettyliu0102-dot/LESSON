@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>少儿乐高编程课程体系发展时间轴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+            transform: translateX(-50%);
+        }
+        
+        .stage {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .stage:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .stage-content {
+            width: 45%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stage-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .stage-node {
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .node-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .node-circle .age {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .stage-1 .node-circle {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+        }
+        
+        .stage-2 .node-circle {
+            background: linear-gradient(135deg, #4ECDC4, #6EE7B7);
+        }
+        
+        .stage-3 .node-circle {
+            background: linear-gradient(135deg, #45B7D1, #6DD5FA);
+        }
+        
+        .stage-4 .node-circle {
+            background: linear-gradient(135deg, #96CEB4, #B8E8F8);
+        }
+        
+        .content-section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .content-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .content-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+        
+        .ability-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .ability-list li {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #444;
+            border-left: 4px solid;
+        }
+        
+        .stage-1 .ability-list li {
+            border-left-color: #FF6B6B;
+        }
+        
+        .stage-2 .ability-list li {
+            border-left-color: #4ECDC4;
+        }
+        
+        .stage-3 .ability-list li {
+            border-left-color: #45B7D1;
+        }
+        
+        .stage-4 .ability-list li {
+            border-left-color: #96CEB4;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .stage-1 .tag {
+            background: #FF6B6B;
+        }
+        
+        .stage-2 .tag {
+            background: #4ECDC4;
+        }
+        
+        .stage-3 .tag {
+            background: #45B7D1;
+        }
+        
+        .stage-4 .tag {
+            background: #96CEB4;
+        }
+        
+        @media (max-width: 768px) {
+            .stage {
+                flex-direction: column !important;
+            }
+            
+            .stage-content, .stage-node, .image-carousel {
+                width: 100%;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .stage-node {
+                flex-direction: row;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* 图片轮播样式 */
+        .image-carousel {
+            width: 45%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        
+        .carousel-image.active {
+            opacity: 1;
+        }
+        
+        .next-button {
+            background: linear-gradient(135deg, #4ECDC4, #6EE7B7);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+        }
+        
+        .stage-1 .next-button {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .stage-1 .next-button:hover {
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        }
+        
+        .next-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(78, 205, 196, 0.4);
+        }
+        
+        .carousel-counter {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 少儿乐高编程课程体系发展时间轴</h1>
+            <p>从3岁意识世界到6岁创造世界的完整学习路径</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- 意识世界 -->
+            <div class="stage stage-1">
+                <div class="stage-content">
+                    <div class="content-section">
+                        <div class="section-title">📖 学习内容</div>
+                        <ul class="content-list">
+                            <li><strong>学习器材：</strong>乐高管道游戏套装</li>
+                            <li><strong>主题方向：</strong></li>
+                            <li>🦁 <strong>动物世界</strong> - 搭建动物栖息地（兔子洞穴、小鸟鸟巢等）</li>
+                            <li>🏫 <strong>生活场景</strong> - 搭建超市、学校、医院等生活场景</li>
+                            <li>🏔️ <strong>自然景观</strong> - 搭建沙漠、草原、海洋等自然景观</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="section-title">💪 能力培养</div>
+                        <ul class="ability-list">
+                            <li>🗣️ <strong>语言能力</strong> - 增加词汇量、提高语言表达、提升倾听与理解</li>
+                            <li>✋ <strong>动作协调能力</strong> - 手部精细动作、大动作协调</li>
+                            <li>🤝 <strong>社交能力</strong> - 合作与分享、情感表达与理解、规则意识</li>
+                            <li>🧠 <strong>逻辑能力</strong> - 研究、构建和测试因果关系</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="stage-node">
+                    <div class="node-circle">
+                        意识<br>世界
+                        <div class="age">3岁<br>小小班</div>
+                    </div>
+                </div>
+                
+                <!-- 图片轮播 -->
+                <div class="image-carousel">
+                    <div class="carousel-container" id="carousel1">
+                        <!-- 意识世界插图作为第一张 -->
+                        <img src="意识世界.jpg" alt="意识世界" class="carousel-image active">
+                        <img src="图片1.png" alt="乐高搭建" class="carousel-image">
+                        <img src="图片2.png" alt="乐高课程" class="carousel-image">
+                        <img src="图片3.png" alt="乐高管道" class="carousel-image">
+                    </div>
+                    <button class="next-button" onclick="nextImage('carousel1')">🔄 下一张</button>
+                    <div class="carousel-counter">
+                        <span id="current-image1">1</span>/4
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 发现世界 -->
+            <div class="stage stage-2">
+                <!-- 图片轮播 -->
+                <div class="image-carousel">
+                    <div class="carousel-container" id="carousel2">
+                        <!-- 发现世界插图作为第一张 -->
+                        <img src="发现世界.jpg" alt="发现世界" class="carousel-image active">
+                        <img src="图片4.png" alt="乐高螺丝刀套装" class="carousel-image">
+                        <img src="图片5.png" alt="乐高课程" class="carousel-image">
+                        <img src="图片6.png" alt="瓦力机器人" class="carousel-image">
+                    </div>
+                    <button class="next-button" onclick="nextImage('carousel2')">🔄 下一张</button>
+                    <div class="carousel-counter">
+                        <span id="current-image2">1</span>/4
+                    </div>
+                </div>
+                
+                <div class="stage-node">
+                    <div class="node-circle">
+                        发现<br>世界
+                        <div class="age">4岁<br>幼儿园小班</div>
+                    </div>
+                </div>
+                
+                <div class="stage-content">
+                    <div class="content-section">
+                        <div class="section-title">📖 学习内容</div>
+                        <ul class="content-list">
+                            <li><strong>学习器材：</strong>乐高螺丝刀套装</li>
+                            <li><strong>主题方向：</strong></li>
+                            <li>🚗 <strong>交通工具</strong> - 搭建汽车、火车、飞机等交通工具</li>
+                            <li>🏙 <strong>城市建设</strong> - 搭建高楼大厦、公园、桥梁等城市部分</li>
+                            <li>🚀 <strong>太空探索</strong> - 搭建太空站、宇宙飞船等太空场景</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="section-title">💪 能力培养</div>
+                        <ul class="ability-list">
+                            <li>👁️ <strong>观察与认知能力</strong> - 观察细节、认知概念、问题解决</li>
+                            <li>🔧 <strong>动手操作能力</strong> - 螺丝刀操作、工具运用、创意改造</li>
+                            <li>🤝 <strong>社交与合作能力</strong> - 小组合作、分享交流、尊重他人</li>
+                            <li>🎯 <strong>专注力</strong> - 长时间集中注意力完成搭建任务、提高抗干扰能力、培养耐心与毅力</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 发明世界 -->
+            <div class="stage stage-3">
+                <div class="stage-content">
+                    <div class="content-section">
+                        <div class="section-title">📖 学习内容</div>
+                        <ul class="content-list">
+                            <li><strong>学习器材：</strong>实物编程套装+机械齿轮套装</li>
+                            <li><strong>第一学期：</strong></li>
+                            <li>管道基础及物理现象认识</li>
+                            <li>创意管道搭建</li>
+                            <li>管道乐园大冒险</li>
+                            <li>管道与机械结合学习</li>
+                            <li><strong>第二学期：</strong></li>
+                            <li>机械模型及工具使用</li>
+                            <li>创意机械发明</li>
+                            <li>乐高乐园大合作</li>
+                            <li>故事创作与呈现</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="section-title">💪 能力培养</div>
+                        <ul class="ability-list">
+                            <li>🎨 <strong>空间想象力</strong> - 设计复杂搭建模型，理解三维空间结构，培养空间认知能力</li>
+                            <li>🧠 <strong>逻辑思维能力</strong> - 解决搭建中问题，培养顺序思维，理解因果关系</li>
+                            <li>🗣️ <strong>语言表达能力</strong> - 自信分享作品，清晰描述创作思路，锻炼表达能力</li>
+                            <li>💡 <strong>创造力和想象力</strong> - 设计独特主题作品，发挥创意，培养创新思维</li>
+                            <li>👁️ <strong>观察能力和科学探究能力</strong> - 培养观察力，探索物理现象，激发科学兴趣</li>
+                            <li>🤝 <strong>团队合作能力</strong> - 友好合作完成任务，学习分工协作，培养团队精神</li>
+                            <li>⚙️ <strong>机械认知能力</strong> - 认识齿轮、轴、滑轮等机械部件，理解简单机械原理</li>
+                            <li>🎯 <strong>问题解决能力</strong> - 面对搭建挑战，尝试不同方法，培养解决问题的耐心和毅力</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="stage-node">
+                    <div class="node-circle">
+                        发明<br>世界
+                        <div class="age">5岁<br>幼儿园中班</div>
+                    </div>
+                </div>
+                
+                <!-- 图片轮播 -->
+                <div class="image-carousel">
+                    <div class="carousel-container" id="carousel3">
+                        <!-- 实物编程作为第一张 -->
+                        <img src="实物编程.jpg" alt="实物编程" class="carousel-image active">
+                        <img src="图片7.png" alt="乐高搭建" class="carousel-image">
+                        <img src="图片8.png" alt="乐高课程" class="carousel-image">
+                        <img src="图片9.png" alt="机械齿轮" class="carousel-image">
+                        <img src="图片10.png" alt="创意作品" class="carousel-image">
+                    </div>
+                    <button class="next-button" onclick="nextImage('carousel3')">🔄 下一张</button>
+                    <div class="carousel-counter">
+                        <span id="current-image3">1</span>/5
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 创造世界 -->
+            <div class="stage stage-4">
+                <!-- 图片轮播 -->
+                <div class="image-carousel">
+                    <div class="carousel-container" id="carousel4">
+                        <!-- 创造世界插图作为第一张 -->
+                        <img src="图片11.jpg" alt="创造世界" class="carousel-image active">
+                        <img src="图片12.png" alt="Wedo机器人" class="carousel-image">
+                        <img src="图片13.png" alt="智能编程" class="carousel-image">
+                        <img src="图片14.png" alt="创意作品" class="carousel-image">
+                    </div>
+                    <button class="next-button" onclick="nextImage('carousel4')">🔄 下一张</button>
+                    <div class="carousel-counter">
+                        <span id="current-image4">1</span>/4
+                    </div>
+                </div>
+                
+                <div class="stage-node">
+                    <div class="node-circle">
+                        创造<br>世界
+                        <div class="age">6岁<br>幼儿园大班</div>
+                    </div>
+                </div>
+                
+                <div class="stage-content">
+                    <div class="content-section">
+                        <div class="section-title">📖 学习内容</div>
+                        <ul class="content-list">
+                            <li><strong>学习器材：</strong>Wedo2.0科学机器人套装</li>
+                            <li><strong>第一学期：</strong></li>
+                            <li>🤖 <strong>机器人小伙伴的诞生</strong> - 介绍Wedo套装部件，搭建简单机器人</li>
+                            <li>💻 <strong>机器人编程初体验</strong> - 认识编程软件，控制机器人行动</li>
+                            <li>🎯 <strong>智能机器人的感知世界</strong> - 学习传感器应用，编程条件判断</li>
+                            <li>🏆 <strong>机器人运动会</strong> - 设计编程机器人参加比赛</li>
+                            <li><strong>第二学期：</strong></li>
+                            <li>🧙 <strong>编程魔法世界的进阶之旅</strong> - 学习高级编程功能如循环变量</li>
+                            <li>🎨 <strong>创意编程挑战</strong> - 完成创意编程任务</li>
+                            <li>🔬 <strong>机器人科学探索</strong> - 结合科学知识开展编程项目</li>
+                            <li>🌟 <strong>我的机器人创意秀</strong> - 自由创作展示独特功能的机器人</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <div class="section-title">💪 能力培养</div>
+                        <ul class="ability-list">
+                            <li>🧠 <strong>逻辑思维能力</strong> - 设计复杂算法，培养顺序思维和推理能力，理解编程逻辑</li>
+                            <li>🔍 <strong>批判性思维</strong> - 分析编程错误，排查问题，培养独立思考能力</li>
+                            <li>💡 <strong>创新实践能力</strong> - 创造实用作品，将创意转化为现实，培养动手实践能力</li>
+                            <li>📖 <strong>自主学习能力</strong> - 主动解决问题，探索新知识，培养终身学习习惯</li>
+                            <li>🤝 <strong>团队协作能力</strong> - 高效完成项目，学习分工合作，培养沟通协调能力</li>
+                            <li>🗣️ <strong>语言表达能力</strong> - 阐述编程思路，清晰分享作品，锻炼公众表达能力</li>
+                            <li>⚙️ <strong>工程思维能力</strong> - 理解机械结构，掌握传感器应用，培养系统思考能力</li>
+                            <li>🎯 <strong>专注力与耐心</strong> - 长时间专注编程调试，培养耐心和毅力，提高抗挫折能力</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
+            <p>📚 每个阶段都为孩子提供循序渐进的学习体验，从基础搭建到智能机器人编程的完整发展路径</p>
+        </div>
+    </div>
+    
+    <script>
+        // 轮播状态管理
+        const carouselStates = {
+            'carousel1': { current: 0, total: 4, images: [] },
+            'carousel2': { current: 0, total: 4, images: [] },
+            'carousel3': { current: 0, total: 5, images: [] },
+            'carousel4': { current: 0, total: 4, images: [] }
+        };
+        
+        // 初始化轮播图片
+        function initCarousels() {
+            Object.keys(carouselStates).forEach(carouselId => {
+                const container = document.getElementById(carouselId);
+                if (container) {
+                    carouselStates[carouselId].images = container.querySelectorAll('.carousel-image');
+                    if (carouselStates[carouselId].images.length > 0) {
+                        carouselStates[carouselId].images[0].classList.add('active');
+                    }
+                }
+            });
+        }
+        
+        function nextImage(carouselId) {
+            const state = carouselStates[carouselId];
+            if (!state || state.images.length === 0) return;
+            
+            // 隐藏当前图片
+            state.images[state.current].classList.remove('active');
+            
+            // 计算下一张图片索引
+            state.current = (state.current + 1) % state.images.length;
+            
+            // 显示下一张图片
+            state.images[state.current].classList.add('active');
+            
+            // 更新计数器
+            document.getElementById(`current-image${carouselId.replace('carousel', '')}`).textContent = state.current + 1;
+        }
+        
+        // 页面加载完成后初始化
+        window.onload = initCarousels;
+    </script>
+</body>
+</html>
